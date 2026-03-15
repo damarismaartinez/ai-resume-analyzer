@@ -9,3 +9,6 @@ export const formatSize = (bytes: number): string => {
 };
 
 export const generateUUID = () => crypto.randomUUID();
+
+export const cn = (...classes: (string | undefined | null | false)[]) =>
+    classes.filter(Boolean).join(" ");

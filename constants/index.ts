@@ -240,9 +240,15 @@ export const prepareInstructions = ({
   Be thorough and detailed. Don't be afraid to point out any mistakes or areas for improvement.
   If there is a lot to improve, don't hesitate to give low scores. This is to help the user to improve their resume.
   If available, use the job description for the job user is applying to to give more detailed feedback.
-  If provided, take the job description into consideration.
   The job title is: ${jobTitle}
   The job description is: ${jobDescription}
-  Provide the feedback using the following format: ${AIResponseFormat}
-  Return the analysis as a JSON object, without any other text and without the backticks.
-  Do not include any other text or comments.`;
+  
+  You MUST respond with ONLY a valid JSON object that EXACTLY matches this TypeScript interface - do not add any extra fields, do not rename any fields, do not nest sections differently:
+  ${AIResponseFormat}
+  
+  CRITICAL RULES:
+  - Return ONLY the JSON object, no markdown, no backticks, no explanations
+  - Use EXACTLY these field names: overallScore, ATS, toneAndStyle, content, structure, skills
+  - Every section MUST have a score (0-100) and a tips array
+  - Each tip MUST have type ("good" or "improve"), tip (short title), and explanation (detailed)
+  - Do NOT invent new fields like "sections", "priorityActions", "overallFeedback" etc.`;

@@ -15,6 +15,8 @@ interface Resume {
 }
 
 interface Feedback {
+    ats_analysis: any;
+    sections: any;
     overallScore: number;
     ATS: {
         score: number;

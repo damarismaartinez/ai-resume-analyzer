@@ -55,7 +55,7 @@ const Resume = () => {
         loadResume();
 
     }, [id, kv, fs]);
-
+    console.log("ats_analysis:", JSON.stringify(feedback?.ats_analysis, null, 2));
     return (
         <main className="!pt-0">
 
@@ -96,8 +96,18 @@ const Resume = () => {
                             <Summary feedback={feedback} />
 
                             <ATS
-                                score={feedback?.ATS?.score ?? 0}
-                                suggestions={feedback?.ATS?.tips ?? []}
+                                score={(() => {
+                                    const f = feedback as any;
+                                    return f?.ATS?.score ?? f?.sections?.ats_compatibility?.score ?? f?.sections?.atsCompatibility?.score ?? 0;
+                                })()}
+                                suggestions={(() => {
+                                    const f = feedback as any;
+                                    const tips = f?.ATS?.tips;
+                                    if (tips?.length) return tips;
+                                    const strengths = (f?.job_match_analysis?.matching_strengths ?? []).map((tip: string) => ({ type: "good" as const, tip }));
+                                    const gaps = (f?.job_match_analysis?.critical_gaps ?? []).map((tip: string) => ({ type: "improve" as const, tip }));
+                                    return [...strengths, ...gaps];
+                                })()}
                             />
 
                             <Details feedback={feedback} />
