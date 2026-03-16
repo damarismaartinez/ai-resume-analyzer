@@ -22,13 +22,13 @@ export default function Home() {
     },   [auth.isAuthenticated])
 
     return (
-        <main className=" bg-[url('/images/bg-main.svg')] bg-cover">
+        <main className=" bg-[url('/images/bg-main.svg')] bg-cover ">
             <Navbar />
 
             <section className="main-section">
                 <div className="page-heading py-16">
-                    <h1>Track Your Application & Resume Ratings</h1>
-                    <h2>Review your submissions and check AI-powered feedback.</h2>
+                    <h1>Your Dream Job Starts Here!</h1>
+                    <h2>Upload your resume and let AI guide you toward your best application yet.</h2>
                 </div>
 
             {resumes.length > 0 && (

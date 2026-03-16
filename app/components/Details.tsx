@@ -39,39 +39,27 @@ const ScoreBadge = ({ score }: { score: number }) => {
     );
 };
 
-const CategoryHeader = ({
-                            title,
-                            categoryScore,
-                        }: {
-    title: string;
-    categoryScore: number;
-}) => {
+const CategoryHeader = ({ title, categoryScore }: { title: string; categoryScore: number }) => {
     return (
         <div className="flex flex-row gap-4 items-center py-2">
-            <p className="text-2xl font-semibold">{title}</p>
+            <p className="text-2xl font-semibold text-[#c4a8b8]">{title}</p>
             <ScoreBadge score={categoryScore} />
         </div>
     );
 };
 
-const CategoryContent = ({
-                             tips,
-                         }: {
-    tips: { type: "good" | "improve"; tip: string; explanation: string }[];
-}) => {
+const CategoryContent = ({ tips }: { tips: { type: "good" | "improve"; tip: string; explanation: string }[] }) => {
     return (
         <div className="flex flex-col gap-4 items-center w-full">
-            <div className="bg-gray-50 w-full rounded-lg px-5 py-4 flex flex-col gap-4">
+            <div className="bg-[#fce8f1] w-full rounded-lg px-5 py-4 flex flex-col gap-4 border border-[#e8c8d8]">
                 {tips.map((tip, index) => (
                     <div className="flex flex-row gap-2 items-center" key={index}>
                         <img
-                            src={
-                                tip.type === "good" ? "/icons/check.svg" : "/icons/warning.svg"
-                            }
+                            src={tip.type === "good" ? "/icons/check.svg" : "/icons/warning.svg"}
                             alt="score"
                             className="size-5"
                         />
-                        <p className="text-sm text-gray-500">{tip.tip}</p>
+                        <p className="text-sm text-[#9e9aaa]">{tip.tip}</p>
                     </div>
                 ))}
             </div>
@@ -80,25 +68,21 @@ const CategoryContent = ({
                     <div
                         key={index + tip.tip}
                         className={cn(
-                            "flex flex-col gap-2 rounded-2xl p-4 ",
+                            "flex flex-col gap-2 rounded-2xl p-4",
                             tip.type === "good"
-                                ? "bg-green-50 border border-green-200 text-green-700"
-                                : "bg-yellow-50 border border-yellow-200 text-yellow-700"
+                                ? "bg-[#edf7f5] border border-[#b8e8df] text-[#4a9e8e]"
+                                : "bg-[#fdf0f3] border border-[#f0c8d0] text-[#c4607a]"
                         )}
                     >
                         <div className="flex flex-row gap-2 items-center">
                             <img
-                                src={
-                                    tip.type === "good"
-                                        ? "/icons/check.svg"
-                                        : "/icons/warning.svg"
-                                }
+                                src={tip.type === "good" ? "/icons/check.svg" : "/icons/warning.svg"}
                                 alt="score"
                                 className="size-5"
                             />
                             <p className="text-md font-semibold">{tip.tip}</p>
                         </div>
-                        <p>{tip.explanation}</p>
+                        <p className="opacity-80">{tip.explanation}</p>
                     </div>
                 ))}
             </div>

@@ -90,7 +90,7 @@ const Resume = () => {
 
                 </section>
                 <section className="feedback-section">
-                    <h2 className="text-4x1 !text-black font-bold">Resume Review</h2>
+                    <h2 className="text-4x1 !text-[#c4a8b8] font-bold">Resume Review</h2>
                     {feedback ? (
                         <div className="flex flex-col gap-8 animate-in fade-in duration-1000">
                             <Summary feedback={feedback} />
